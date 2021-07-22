@@ -11,11 +11,6 @@ const urlSchema = mongoose.Schema({
     type: String,
     require: true,
     trim: true,
-    validate(longUrl) {
-      if (!longUrl) {
-        throw new Error("URL must be right");
-      }
-    },
   },
   shortUrl: {
     type: String,
