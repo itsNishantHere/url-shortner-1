@@ -38,7 +38,7 @@ app.post("/short", async (req, res) => {
   }
 });
 
-app.get("/short/:url", (req, res) => {
+app.get("/:url", (req, res) => {
   console.log(req.params.url);
   URL.find({ shortUrl: req.params.url }, async (err, url) => {
     if (err) {
