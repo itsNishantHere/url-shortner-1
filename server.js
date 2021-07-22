@@ -39,10 +39,13 @@ app.post("/short", async (req, res) => {
 });
 
 app.get("/:url", (req, res) => {
-  console.log(req.params.url);
   URL.find({ shortUrl: req.params.url }, async (err, url) => {
+    console.log(url);
     if (err) {
-      res.send("Something went wrong");
+      return res.send("Something went wrong");
+    }
+    if (url) {
+      return res.send("404 Page not found");
     }
     url[0].clicks++;
     await url[0].save();
@@ -51,7 +54,6 @@ app.get("/:url", (req, res) => {
 });
 
 app.get("/delete/:id", (req, res) => {
-  console.log();
   URL.findOneAndDelete({ shortUrl: req.params.id }, (err, url) => {
     if (err) {
       res.send("Something went wrong");
