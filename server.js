@@ -9,7 +9,6 @@ const { User, URL } = require("./db");
 const session = require("express-session");
 
 const app = express();
-const mongoose = require("mongoose");
 const MongoDBSession = require("connect-mongodb-session")(session);
 
 app.set("view engine", "ejs");
@@ -18,6 +17,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.set("views", path.join(__dirname, "/views"));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "public")));
 
 const store = new MongoDBSession({
   uri: process.env.MONGODB_URL,
