@@ -22,6 +22,28 @@
         <li class="nav-item">
           <a class="nav-link text-light" href="#">Link</a>
         </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active text-light"
+            aria-current="page"
+            href="/register"
+            >Sign up</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active text-light"
+            aria-current="page"
+            href="/login"
+          >
+            Login</a
+          >
+        </li>
+        <% if(isAuth) { %>
+        <form action="/logout" method="POST">
+          <button class="text-light btn" type="submit">Logout</button>
+        </form>
+        <% } %>
       </ul>
     </div>
   </div>
